@@ -1,109 +1,110 @@
 
 class TV:
     _numTv = 1;
-    _canal = 1;
-    __precio = 500;
-    _volumen = 1;
 
     def __init__(self, marca, estado):
         self._marca = marca;
         self._estado = estado;
+        self._canal = 1;
+        self._precio = 500;
+        self._volumen = 1;
 
         TV._numTv+=1;
     
-
-    def set_numTv(self, numTv):
-        TV._numTv = numTv;
+    @classmethod
+    def setNumTV(self, numTv):
+        self._numTv = numTv;
     
 
     def volumenUp(self):
-        if (self, not self.isOn()):
-            return false;
+        if(not self.isOn()):
+            return False;
         
-        if (self, isInValidLimitsVolume("UP")):
+        if(self.isInValidLimitsVolume("UP")):
             self._volumen += 1;
-            return true;
+            return True;
         
-        return false;
+        return False;
     
 
     def volumenDown(self):
-        if (self, not self.isOn()):
-            return false;
+        if(not self.isOn()):
+            return False;
         
-        if (self, isInValidLimitsVolume("DOWN")):
+        if(isInValidLimitsVolume("DOWN")):
             self._volumen -= 1;
-            return true;
+            return True;
         
-        return false;
+        return False;
     
 
-    def isInValidLimitsVolume(self, notupOrDown):
+    def isInValidLimitsVolume(self, upOrDown):
         if (upOrDown == "UP"):
-            if (self, self._volumen + 1 > 7):
-                return false;
+            if(self._volumen + 1 > 7):
+                return False;
             
-            return true;
+            return True;
         
         if (upOrDown == "DOWN"):
-            if (self, self._canal - 1 < 0):
-                return false;
+            if(self._canal - 1 < 0):
+                return False;
             
-            return true;
+            return True;
         
-        return false;
+        return False;
     
 
     def canalUp(self):
         if (not self.isOn()):
-            return false;
+            return False;
         
-        if (isInValidLimitsChannels(self, "UP")):
+        if (self.isInValidLimitsChannels("UP")):
             self._canal += 1;
-            return true;
+            return True;
         
-        return false;
+        return False;
     
 
     def canalDown(self):
         if (not self.isOn()):
-            return false;
+            return False;
         
-        if (isInValidLimitsChannels(self, "DOWN")):
+        if (self.isInValidLimitsChannels("DOWN")):
             self._canal -= 1;
-            return true;
+            return True;
         
-        return false;
+        return False;
     
 
-    def isInValidLimitsChannels(self, notupOrDown):
+    def isInValidLimitsChannels(self, upOrDown):
         if (upOrDown == "UP"):
             if (self._canal + 1 > 120):
-                return false;
+                return False;
             
-            return true;
+            return True;
         
         if (upOrDown == "DOWN"):
-            if (self, self._canal - 1 < 1):
-                return false;
+            if(self._canal - 1 < 1):
+                return False;
             
-            return true;
+            return True;
         
-        return false;
+        return False;
     
     def isOn(self):
         return self._estado;
     
 
     def turnOn(self):
-        self._estado = true;
-        return true;
+        self._estado = True;
+        return True;
     
     def turnOff(self):
-        self._estado = false;
-        return false;
+        self._estado = False;
+        return False;
     
-    def getNumTv(self):
+    @classmethod
+    def getNumTV(self):
         return self._numTv;
     
 
@@ -119,14 +120,14 @@ class TV:
         return self._canal;
     
 
-    def setCanal(self, _canal):
-        if (not isOn(self, )):
+    def setCanal(self, canal):
+        if (not self.isOn()):
             return;
         
-        if (_canal > 120 or _canal < 1):
+        if (canal > 120 or canal < 1):
             return;
         
-        self._canal = _canal;
+        self._canal = canal;
     
 
     def getPrecio(self ):
@@ -146,7 +147,7 @@ class TV:
     
 
     def getControl(self):
-        return _control;
+        return self._control;
     
 
     def setControl(self, control):

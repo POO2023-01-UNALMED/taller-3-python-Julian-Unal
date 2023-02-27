@@ -3,7 +3,7 @@ class Control:
     def enlazar(self, tv):
         self.tv = tv;
         self.tv.setControl(self);
-        return true;
+        return True;
     
     def volumenUp(self):
 
@@ -34,7 +34,7 @@ class Control:
 
     def setCanal(self, canal):
         self.tv.setCanal(canal);
-        return true;
+        return True;
     
 
     def getTv(self):
